@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import type { DatePickerProps } from "antd";
 import { DatePicker } from "antd";
@@ -10,6 +11,7 @@ type SearchProps = GetProps<typeof Input.Search>;
 
 interface TitleProps {
   title: string;
+  collapsed: boolean; // Add this prop to handle sidebar state
 }
 
 const suffix = (
@@ -27,9 +29,15 @@ const onChange: DatePickerProps["onChange"] = (date, dateString) => {
   console.log(date, dateString);
 };
 
-const HeaderUser: React.FC<TitleProps> = ({ title }) => {
+const HeaderUser: React.FC<TitleProps> = ({ title, collapsed }) => {
   return (
-    <header className="fixed bg-white top-[52px] left-0 w-[calc(100%-235px)] ml-[235px] text-white py-4 px-4 flex justify-between">
+    <header
+      className={`bg-white top-[52px] left-0 py-4 px-4 flex justify-between ${
+        collapsed
+          ? "w-[calc(100%-80px)] ml-[80px]"
+          : "w-[calc(100%-235px)] ml-[235px]"
+      } text-white`}
+    >
       <div className="text-lg text-black font-bold">{title}</div>
       <div className="flex gap-4 ml-auto">
         <Space direction="vertical">

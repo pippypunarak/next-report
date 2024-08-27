@@ -17,7 +17,11 @@ interface DataType {
   recentAct: string;
 }
 
-const UsersTable: React.FC = () => {
+interface UsersTableProps {
+  collapsed: boolean; // Add this prop to handle sidebar state
+}
+
+const UsersTable: React.FC<UsersTableProps> = ({ collapsed }) => {
   const router = useRouter();
 
   const handleCellClick = (userID: string) => {
@@ -176,15 +180,22 @@ const UsersTable: React.FC = () => {
   };
 
   return (
-    <Table
-      columns={columns}
-      dataSource={data}
-      onChange={onChange}
-      className="custom-table"
-      onRow={(record) => ({
-        onClick: () => handleCellClick(record.userID),
-      })}
-    />
+    <div
+      style={{
+        marginLeft: collapsed ? "80px" : "235px",
+        transition: "margin-left 0.3s",
+      }}
+    >
+      <Table
+        columns={columns}
+        dataSource={data}
+        onChange={onChange}
+        className="custom-table"
+        onRow={(record) => ({
+          onClick: () => handleCellClick(record.userID),
+        })}
+      />
+    </div>
   );
 };
 

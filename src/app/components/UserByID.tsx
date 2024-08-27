@@ -6,8 +6,11 @@ import UserByIDChart from "./UserByIDChart";
 import UserCalendar from "./UserCalender";
 
 const { Header, Content, Sider } = Layout;
+interface IDProps {
+  collapsed: boolean; // Add this prop to handle sidebar state
+}
 
-const UserbyID = () => {
+const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
   // State to manage the start and end dates
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
@@ -19,7 +22,13 @@ const UserbyID = () => {
   };
 
   return (
-    <Layout className="min-h-[100vh]">
+    <Layout
+      className="ml-[235px] h-[75vh]"
+      style={{
+        marginLeft: collapsed ? "80px" : "235px",
+        transition: "margin-left 0.3s",
+      }}
+    >
       <Sider theme="light">
         <div className="demo-logo-vertical" />
         <div className="flex justify-center h-[134px] mt-4">
@@ -148,7 +157,14 @@ const UserbyID = () => {
               </Col>
             </Row>
           </div>
-          <div className="p-6 bg-white rounded-lg flex-1">
+          <div
+            style={{
+              padding: 24,
+              background: "#fff",
+              borderRadius: "8px",
+              flex: 1,
+            }}
+          >
             <UserByIDChart startDate={startDate} endDate={endDate} />
           </div>
         </Content>

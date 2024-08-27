@@ -1,20 +1,27 @@
 import React from "react";
 
-interface TitleProps {
+interface HeaderSearchProps {
   title: string;
+  collapsed: boolean;
 }
 
-const HeaderSearch: React.FC<TitleProps> = ({ title }) => {
+const HeaderSearch: React.FC<HeaderSearchProps> = ({ title, collapsed }) => {
   return (
-    <header className="fixed bg-white top-[52px] left-0 w-[calc(100%-235px)] ml-[235px] text-white py-4 px-4 flex justify-between">
-      <div className="text-lg text-black font-bold">{title}</div>
-      <div className="flex gap-4 ml-auto">
-        <div className="relative">
+    <header
+      className={`bg-white top-[52px] left-0 transition-all duration-300 ${
+        collapsed
+          ? "w-[calc(100%-80px)] ml-[80px]"
+          : "w-[calc(100%-240px)] ml-[240px]"
+      } text-black py-4 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between`}
+    >
+      <div className="text-lg font-bold">{title}</div>
+      <div className="flex flex-col sm:flex-row sm:gap-4 ml-auto mt-4 sm:mt-0">
+        <div className="relative mb-2 sm:mb-0">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
             Partner
           </div>
           <select
-            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
+            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-full sm:w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
             defaultValue="all"
           >
             <option value="all">All</option>
@@ -27,12 +34,12 @@ const HeaderSearch: React.FC<TitleProps> = ({ title }) => {
           </select>
         </div>
 
-        <div className="relative">
+        <div className="relative mb-2 sm:mb-0">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
             Gender
           </div>
           <select
-            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
+            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-full sm:w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
             defaultValue="all"
           >
             <option value="all">All</option>
@@ -45,24 +52,24 @@ const HeaderSearch: React.FC<TitleProps> = ({ title }) => {
           </select>
         </div>
 
-        <div className="relative">
+        <div className="relative mb-2 sm:mb-0">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
             Activity
           </div>
           <select
-            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
+            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-full sm:w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
             defaultValue="all"
           >
             <option value="all">All</option>
           </select>
         </div>
 
-        <div className="relative">
+        <div className="relative mb-2 sm:mb-0">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
             Age Range
           </div>
           <select
-            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
+            className="border border-[#491DC5] text-sm rounded-md pl-[70px] pr-3 py-2 w-full sm:w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
             defaultValue="all"
           >
             <option value="all">All</option>

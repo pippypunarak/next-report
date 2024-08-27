@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import Image from "next/image";
@@ -132,14 +132,14 @@ const getMenuItems = (selectedKeys: string[]): MenuItem[] => [
   },
 ];
 
-const Navbar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
-  const router = useRouter();
+interface SidebarProps {
+  collapsed: boolean;
+  toggleSidebar: () => void;
+}
 
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
+const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
+  const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
+  const router = useRouter();
 
   const onSelect: MenuProps["onSelect"] = (info) => {
     console.log("Selected", info);
@@ -150,27 +150,22 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div style={{ position: "relative", width: collapsed ? 80 : 235 }}>
+    <div
+      className={`fixed top-0 left-0 h-full transition-all duration-300 bg-[#0E1839] ${
+        collapsed ? "w-20" : "w-60"
+      }`}
+    >
       <div
-        onClick={toggleCollapsed}
-        className="absolute top-[16px] right-[16px] z-1"
+        onClick={toggleSidebar}
+        className="absolute top-[16px] right-[16px] cursor-pointer"
       >
-        {collapsed ? (
-          <Image
-            alt="show-btn"
-            src="/btn_hidesidebar.svg"
-            width={24}
-            height={24}
-            style={{ transform: "scaleX(-1)" }}
-          />
-        ) : (
-          <Image
-            alt="hide-btn"
-            src="/btn_hidesidebar.svg"
-            width={24}
-            height={24}
-          />
-        )}
+        <Image
+          alt="toggle-btn"
+          src="/btn_hidesidebar.svg"
+          width={24}
+          height={24}
+          style={{ transform: collapsed ? "scaleX(-1)" : "scaleX(1)" }}
+        />
       </div>
       <Image
         alt="aisLogo"
@@ -185,8 +180,8 @@ const Navbar: React.FC = () => {
       <Menu
         onSelect={onSelect}
         selectedKeys={selectedKeys}
-        style={{ backgroundColor: "#0E1839", height: "100vh" }}
-        mode="vertical"
+        style={{ backgroundColor: "#0E1839" }}
+        mode="inline"
         theme="dark"
         inlineCollapsed={collapsed}
         items={getMenuItems(selectedKeys)}
@@ -216,4 +211,4 @@ const Navbar: React.FC = () => {
   );
 };
 
-export default Navbar;
+export default Sidebar;
