@@ -1,0 +1,22 @@
+
+.custom-table .ant-table-thead>tr>th {
+    background-color: #0E1839;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.custom-table .ant-table-column-sorter {
+    color: #FFFFFF;
+}
+
+.custom-table .ant-table-tbody>tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.custom-table .ant-table-tbody>tr:nth-child(even) {
+    background-color: #491DC50A;
+}
+
+.custom-table .ant-table-tbody>tr:hover {
+    background-color: #e6e6e6;
+}

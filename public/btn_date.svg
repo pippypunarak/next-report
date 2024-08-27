@@ -1,0 +1,15 @@
+<svg id="btn_date" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect id="Rectangle_2290" data-name="Rectangle 2290" width="32" height="32" rx="6" fill="#491dc5" opacity="0.1"/>
+  <g id="Group_2615" data-name="Group 2615" transform="translate(9 8)">
+    <path id="Path_2947" data-name="Path 2947" d="M5.091,0V3.955H6.409V2.636H13V1.318H6.409V0Z" transform="translate(-2.455 0)" fill="#491dc5"/>
+    <rect id="Rectangle_2281" data-name="Rectangle 2281" width="1.318" height="1.318" transform="translate(2.636 7.909)" fill="#491dc5"/>
+    <rect id="Rectangle_2282" data-name="Rectangle 2282" width="1.318" height="1.318" transform="translate(5.273 7.909)" fill="#491dc5"/>
+    <rect id="Rectangle_2283" data-name="Rectangle 2283" width="1.318" height="1.318" transform="translate(7.909 7.909)" fill="#491dc5"/>
+    <rect id="Rectangle_2284" data-name="Rectangle 2284" width="1.318" height="1.318" transform="translate(10.545 7.909)" fill="#491dc5"/>
+    <rect id="Rectangle_2285" data-name="Rectangle 2285" width="1.318" height="1.318" transform="translate(2.636 10.545)" fill="#491dc5"/>
+    <rect id="Rectangle_2286" data-name="Rectangle 2286" width="1.318" height="1.318" transform="translate(5.273 10.545)" fill="#491dc5"/>
+    <rect id="Rectangle_2287" data-name="Rectangle 2287" width="1.318" height="1.318" transform="translate(7.909 10.545)" fill="#491dc5"/>
+    <rect id="Rectangle_2288" data-name="Rectangle 2288" width="1.318" height="1.318" transform="translate(10.545 10.545)" fill="#491dc5"/>
+    <path id="Path_2948" data-name="Path 2948" d="M1.318,5.931H13.182V13.84H1.318ZM11.2,0V3.955h1.318V2.636h.659V4.613H1.318V2.636h.659V1.318H0V15.159H14.5V1.318H12.522V0Z" fill="#491dc5"/>
+  </g>
+</svg>
