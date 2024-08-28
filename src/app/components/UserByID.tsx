@@ -6,16 +6,15 @@ import UserByIDChart from "./UserByIDChart";
 import UserCalendar from "./UserCalender";
 
 const { Header, Content, Sider } = Layout;
+
 interface IDProps {
-  collapsed: boolean; // Add this prop to handle sidebar state
+  collapsed: boolean; // Prop to handle sidebar state
 }
 
 const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
-  // State to manage the start and end dates
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
-  // Handler to update the date range
   const handleDateChange = (start: Date | undefined, end: Date | undefined) => {
     setStartDate(start);
     setEndDate(end);
@@ -23,13 +22,13 @@ const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
 
   return (
     <Layout
-      className="ml-[235px] h-[75vh]"
+      className="h-screen"
       style={{
         marginLeft: collapsed ? "80px" : "235px",
         transition: "margin-left 0.3s",
       }}
     >
-      <Sider theme="light">
+      <Sider theme="light" breakpoint="lg" collapsedWidth="0">
         <div className="demo-logo-vertical" />
         <div className="flex justify-center h-[134px] mt-4">
           <Image
@@ -43,24 +42,23 @@ const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
         <div className="text-lg text-center font-bold mt-2">Name</div>
         <div className="text-lg text-center font-bold">Surname</div>
         <div className="text-xs text-center mt-2">Register Date 04/04/2022</div>
-        <Menu mode="vertical" className="mt-4">
-          <Menu.Item>Summary​</Menu.Item>
-          <Menu.Item>All Activities​</Menu.Item>
-          <Menu.Item>Weight History​</Menu.Item>
-          <Menu.Item>About​</Menu.Item>
+        <Menu mode="inline" className="mt-4">
+          <Menu.Item key="1">Summary</Menu.Item>
+          <Menu.Item key="2">All Activities</Menu.Item>
+          <Menu.Item key="3">Weight History</Menu.Item>
+          <Menu.Item key="4">About</Menu.Item>
         </Menu>
       </Sider>
-      <Layout className="bg-white">
+      <Layout className="flex flex-col h-full bg-white">
         <Header style={{ padding: 0, background: "#fff" }}>
-          <div className="flex flex-row justify-between items-center px-4">
+          <div className="flex flex-wrap justify-between items-center px-4">
             <div className="text-lg font-bold mt-6">Summary</div>
-            <div className="flex gap-4 items-center">
+            <div className="flex flex-wrap gap-4 items-center">
               <UserCalendar
                 startDate={startDate}
                 endDate={endDate}
                 onDateChange={handleDateChange}
               />
-
               <div className="relative">
                 <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
                   <Image
@@ -76,7 +74,9 @@ const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
               </div>
               <div>
                 <select className="border border-[#491DC533] text-sm rounded-md w-[137px] h-[32px] text-center text-[#491DC5] bg-[#ECEEFF]">
-                  <option value="all">Export data</option>
+                  <option value="export">Export data</option>
+                  <option value="exportCsv">Export as CSV</option>
+                  <option value="exportPdf">Export as PDF</option>
                 </select>
               </div>
             </div>
@@ -85,87 +85,96 @@ const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
         <Content
           style={{
             margin: "24px 16px 0",
+            background: "#FFFFFF",
             display: "flex",
             flexDirection: "column",
-            background: "#FFFFFF",
+            flexGrow: 1,
+            overflowY: "auto",
           }}
         >
-          <div className="flex justify-center mt-3 mb-6">
-            <Row gutter={16} className="w-full">
-              <Col span={6}>
-                <div className="bg-[#FFF7EF] h-[100px] rounded-lg py-2">
-                  <div className="flex flex-row ml-2">
-                    <Image
-                      src="/Component 1-1.svg"
-                      alt="logo1"
-                      width={24}
-                      height={24}
-                    />
-                    <div className="text-md font-semibold ml-2">
-                      Total Calories
+          <div className="flex flex-col gap-4 flex-grow">
+            <div className="bg-white p-4 rounded-lg">
+              <Row gutter={[16, 16]}>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6}>
+                  <div className="bg-[#FFF7EF] h-[100px] rounded-lg py-2">
+                    <div className="flex items-center ml-2">
+                      <Image
+                        src="/Component 1-1.svg"
+                        alt="logo1"
+                        width={24}
+                        height={24}
+                      />
+                      <div className="text-sm sm:text-md font-semibold ml-2">
+                        Total Calories
+                      </div>
+                    </div>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold ml-10">
+                      1,790
+                    </div>
+                    <div className="text-xxs sm:text-xs ml-9">Out</div>
+                  </div>
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6}>
+                  <div className="bg-[#D9F6FF] h-[100px] rounded-lg py-2">
+                    <div className="flex items-center ml-2">
+                      <Image
+                        src="/Component 1-2.svg"
+                        alt="logo1"
+                        width={24}
+                        height={24}
+                      />
+                      <div className="text-sm sm:text-md font-semibold ml-2">
+                        Total Activities
+                      </div>
+                    </div>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold ml-10">
+                      6
                     </div>
                   </div>
-                  <div className="text-3xl font-bold ml-10">1,790</div>
-                  <div className="text-xs ml-9">Out</div>
-                </div>
-              </Col>
-              <Col span={6}>
-                <div className="bg-[#D9F6FF] h-[100px] rounded-lg py-2">
-                  <div className="flex flex-row ml-2">
-                    <Image
-                      src="/Component 1-2.svg"
-                      alt="logo1"
-                      width={24}
-                      height={24}
-                    />
-                    <div className="text-md font-semibold ml-2">
-                      Total Activities
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6}>
+                  <div className="bg-[#ECEEFF] h-[100px] rounded-lg py-2">
+                    <div className="flex items-center ml-2">
+                      <Image
+                        src="/Component 1-3.svg"
+                        alt="logo3"
+                        width={24}
+                        height={24}
+                      />
+                      <div className="text-sm sm:text-md font-semibold ml-2">
+                        Steps
+                      </div>
+                    </div>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold ml-10">
+                      3,497
                     </div>
                   </div>
-                  <div className="text-3xl font-bold ml-10">6</div>
-                </div>
-              </Col>
-              <Col span={6}>
-                <div className="bg-[#ECEEFF] h-[100px] rounded-lg py-2">
-                  <div className="flex flex-row ml-2">
-                    <Image
-                      src="/Component 1-3.svg"
-                      alt="logo3"
-                      width={24}
-                      height={24}
-                    />
-                    <div className="text-md font-semibold ml-2">Steps</div>
-                  </div>
-                  <div className="text-3xl font-bold ml-10">3,497</div>
-                </div>
-              </Col>
-              <Col span={6}>
-                <div className="bg-[#EBF7F9] h-[100px] rounded-lg py-2">
-                  <div className="flex flex-row ml-2">
-                    <Image
-                      src="/Component 1-4.svg"
-                      alt="logo1"
-                      width={24}
-                      height={24}
-                    />
-                    <div className="text-md font-semibold ml-2">
-                      Stress Level
+                </Col>
+                <Col xs={24} sm={12} md={6} lg={6} xl={6}>
+                  <div className="bg-[#EBF7F9] h-[100px] rounded-lg py-2">
+                    <div className="flex items-center ml-2">
+                      <Image
+                        src="/Component 1-4.svg"
+                        alt="logo1"
+                        width={24}
+                        height={24}
+                      />
+                      <div className="text-sm sm:text-md font-semibold ml-2">
+                        Stress Level
+                      </div>
+                    </div>
+                    <div className="text-xl sm:text-2xl md:text-3xl font-bold ml-10">
+                      0
                     </div>
                   </div>
-                  <div className="text-3xl font-bold ml-10">0</div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-          <div
-            style={{
-              padding: 24,
-              background: "#fff",
-              borderRadius: "8px",
-              flex: 1,
-            }}
-          >
-            <UserByIDChart startDate={startDate} endDate={endDate} />
+                </Col>
+              </Row>
+            </div>
+            <div className="flex-1 bg-white p-4 rounded-lg overflow-hidden">
+              <div className="flex flex-col h-full max-h-[350px] overflow-y-auto">
+                <UserByIDChart startDate={startDate} endDate={endDate} />
+              </div>
+            </div>
           </div>
         </Content>
       </Layout>

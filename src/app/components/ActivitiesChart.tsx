@@ -199,10 +199,12 @@ const ActivityChart: React.FC<ActivityChartProps> = ({
 
   return (
     <div className="p-4 bg-white h-5/6">
-      <select className="text-sm rounded-md w-[66px] h-[28px] text-[#491DC5] bg-[#491DC51A]">
-        <option value="Hours">Hours</option>
-        <option value="Kilometers">Kilometers</option>
-      </select>
+      <div className="flex justify-start mb-4">
+        <select className="text-sm rounded-md w-[66px] h-[28px] text-[#491DC5] bg-[#491DC51A]">
+          <option value="Hours">Hours</option>
+          <option value="Kilometers">Kilometers</option>
+        </select>
+      </div>
       <div className="h-full">
         <Line data={data} options={options} />
       </div>

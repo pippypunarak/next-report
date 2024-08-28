@@ -11,7 +11,7 @@ type SearchProps = GetProps<typeof Input.Search>;
 
 interface TitleProps {
   title: string;
-  collapsed: boolean; // Add this prop to handle sidebar state
+  collapsed: boolean;
 }
 
 const suffix = (
@@ -32,39 +32,44 @@ const onChange: DatePickerProps["onChange"] = (date, dateString) => {
 const HeaderUser: React.FC<TitleProps> = ({ title, collapsed }) => {
   return (
     <header
-      className={`bg-white top-[52px] left-0 py-4 px-4 flex justify-between ${
+      className={`bg-white top-[52px] left-0 py-4 px-4 flex justify-between items-center flex-wrap ${
         collapsed
           ? "w-[calc(100%-80px)] ml-[80px]"
           : "w-[calc(100%-235px)] ml-[235px]"
-      } text-white`}
+      }`}
     >
-      <div className="text-lg text-black font-bold">{title}</div>
-      <div className="flex gap-4 ml-auto">
-        <Space direction="vertical">
+      <div className="text-lg text-black font-bold ml-6 mb-2 md:mb-0">
+        {title}
+      </div>
+      <div className="flex flex-wrap gap-4 ml-auto items-center justify-end w-full md:w-auto">
+        <Space direction="vertical" className="w-full md:w-auto">
           <Search
             placeholder="User ID, Name, Display Name, Phone"
             onSearch={onSearch}
-            style={{ width: 258 }}
-            className="border-[#491DC533]"
+            style={{ width: "100%" }}
+            className="border-[#491DC533] w-full md:w-[258px]"
           />
         </Space>
 
-        <Space direction="vertical">
-          <DatePicker onChange={onChange} className="border-[#491DC533]" />
+        <Space direction="vertical" className="w-full md:w-auto">
+          <DatePicker
+            onChange={onChange}
+            className="border-[#491DC533] w-full md:w-auto"
+          />
         </Space>
 
-        <div className="relative">
+        <div className="relative w-full md:w-auto mb-2 md:mb-0">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
             Activity
           </div>
           <select
-            className="border border-[#491DC533] text-sm rounded-md pl-[70px] pr-3 py-2 w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
+            className="border border-[#491DC533] text-sm rounded-md pl-[70px] pr-3 py-2 w-full md:w-[160px] h-[32px] text-right text-[#491DC5] bg-white"
             defaultValue="all"
           >
             <option value="all">All</option>
           </select>
         </div>
-        <button className="bg-[#491DC5] rounded-md text-sm py-1.5 px-4">
+        <button className="bg-[#491DC5] rounded-md text-sm text-white py-1.5 px-4 w-full md:w-auto">
           Add User
         </button>
       </div>

@@ -80,6 +80,8 @@ const UserByIDChart: React.FC<ActivityChartProps> = ({
         grid: {
           drawOnChartArea: false,
         },
+        categoryPercentage: 0.8, // ปรับตามความเหมาะสม
+        barPercentage: 0.9, // ปรับตามความเหมาะสม
       },
       y: {
         title: {
@@ -102,14 +104,14 @@ const UserByIDChart: React.FC<ActivityChartProps> = ({
           label: (tooltipItem: any) => `Kcal: ${tooltipItem.raw}`,
         },
       },
-    },
-    datalabels: {
-      anchor: "end",
-      align: "top",
-      formatter: (value: number) => `${value} Kcal`,
-      color: "#333",
-      font: {
-        weight: "bold",
+      datalabels: {
+        anchor: "end",
+        align: "top",
+        formatter: (value: number) => `${value} Kcal`,
+        color: "#333",
+        font: {
+          weight: "bold",
+        },
       },
     },
   };

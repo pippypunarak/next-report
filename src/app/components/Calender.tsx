@@ -32,8 +32,8 @@ const Calendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <div className="flex flex-row justify-between items-start">
-      <div className="flex flex-row">
+    <div className="flex flex-col md:flex-row md:justify-between items-start">
+      <div className="flex flex-col md:flex-row">
         <div
           onClick={toggleCalendar}
           className="mt-1 cursor-pointer text-[#491DC5] text-sm"
@@ -43,7 +43,7 @@ const Calendar: React.FC<CalendarProps> = ({
             ? `${startDate.toLocaleDateString()} - ${endDate.toLocaleDateString()}`
             : "Select Date Range"}
         </div>
-        <div className="relative ml-4">
+        <div className="relative mt-2 md:mt-0 md:ml-4">
           <Image
             alt="calendar"
             src="/btn_date.svg"
@@ -67,7 +67,7 @@ const Calendar: React.FC<CalendarProps> = ({
           )}
         </div>
       </div>
-      <div className="flex ml-4">
+      <div className="flex mt-2 md:mt-0 md:ml-4">
         <ReportButton
           startDate={startDate}
           endDate={endDate}
