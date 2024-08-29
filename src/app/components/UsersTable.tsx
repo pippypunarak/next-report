@@ -17,11 +17,7 @@ interface DataType {
   recentAct: string;
 }
 
-interface UsersTableProps {
-  collapsed: boolean; // Add this prop to handle sidebar state
-}
-
-const UsersTable: React.FC<UsersTableProps> = ({ collapsed }) => {
+const UsersTable = () => {
   const router = useRouter();
 
   const handleCellClick = (userID: string) => {

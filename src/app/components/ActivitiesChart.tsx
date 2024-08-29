@@ -198,8 +198,8 @@ const ActivityChart: React.FC<ActivityChartProps> = ({
   };
 
   return (
-    <div className="p-4 bg-white h-5/6">
-      <div className="flex justify-start mb-4">
+    <div className="p-4 bg-white h-[500px]">
+      <div className="flex flex-col">
         <select className="text-sm rounded-md w-[66px] h-[28px] text-[#491DC5] bg-[#491DC51A]">
           <option value="Hours">Hours</option>
           <option value="Kilometers">Kilometers</option>

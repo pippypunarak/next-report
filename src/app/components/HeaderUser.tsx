@@ -11,7 +11,6 @@ type SearchProps = GetProps<typeof Input.Search>;
 
 interface TitleProps {
   title: string;
-  collapsed: boolean;
 }
 
 const suffix = (
@@ -29,7 +28,7 @@ const onChange: DatePickerProps["onChange"] = (date, dateString) => {
   console.log(date, dateString);
 };
 
-const HeaderUser: React.FC<TitleProps> = ({ title, collapsed }) => {
+const HeaderUser: React.FC<TitleProps> = ({ title }) => {
   return (
     <header className="bg-white top-[52px] left-0 mb-4 flex justify-between items-center flex-wrap ">
       <div className="text-lg text-black font-bold mb-2 md:mb-0">{title}</div>
