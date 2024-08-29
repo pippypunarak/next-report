@@ -18,5 +18,6 @@
 }
 
 .custom-table .ant-table-tbody>tr:hover {
-    background-color: #e6e6e6;
+    background-color: #d1d7da;
+    cursor: pointer;
 }

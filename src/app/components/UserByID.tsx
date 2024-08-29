@@ -7,11 +7,7 @@ import UserCalendar from "./UserCalender";
 
 const { Header, Content, Sider } = Layout;
 
-interface IDProps {
-  collapsed: boolean; // Prop to handle sidebar state
-}
-
-const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
+const UserbyID = () => {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
   const [endDate, setEndDate] = useState<Date | undefined>(undefined);
 
@@ -21,13 +17,7 @@ const UserbyID: React.FC<IDProps> = ({ collapsed }) => {
   };
 
   return (
-    <Layout
-      className="h-screen"
-      style={{
-        marginLeft: collapsed ? "80px" : "235px",
-        transition: "margin-left 0.3s",
-      }}
-    >
+    <Layout className="h-full">
       <Sider theme="light" breakpoint="lg" collapsedWidth="0">
         <div className="demo-logo-vertical" />
         <div className="flex justify-center h-[134px] mt-4">

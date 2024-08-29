@@ -7,14 +7,8 @@ interface HeaderSearchProps {
 
 const HeaderSearch: React.FC<HeaderSearchProps> = ({ title, collapsed }) => {
   return (
-    <header
-      className={`bg-white top-[52px] left-0 transition-all duration-300 ${
-        collapsed
-          ? "w-[calc(100%-80px)] ml-[80px]"
-          : "w-[calc(100%-240px)] ml-[240px]"
-      } text-black py-4 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between`}
-    >
-      <div className="text-lg font-bold">{title}</div>
+    <div className="bg-white top-[52px] left-0 text-black py-4 px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+      <div className="ml-8 text-lg font-bold">{title}</div>
       <div className="flex flex-col sm:flex-row sm:gap-4 ml-auto mt-4 sm:mt-0">
         <div className="relative mb-2 sm:mb-0 sm:w-[160px] md:w-[180px] lg:w-[200px] xl:w-[220px]">
           <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-[#4E4E4E]">
@@ -79,7 +73,7 @@ const HeaderSearch: React.FC<HeaderSearchProps> = ({ title, collapsed }) => {
           </select>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 

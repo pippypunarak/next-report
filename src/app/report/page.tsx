@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import HeaderSearch from "./components/HeaderSearch";
-import Calendar from "./components/Calender";
-import ActivityChart from "./components/ActivitiesChart";
+import HeaderSearch from "../components/HeaderSearch";
+import Calendar from "../components/Calender";
+import ActivityChart from "../components/ActivitiesChart";
 
 const App = () => {
   const [startDate, setStartDate] = useState<Date | undefined>(undefined);
@@ -22,7 +22,7 @@ const App = () => {
     <>
       <div className="flex flex-col h-screen">
         <HeaderSearch title="Total Activities" collapsed={collapsed} />
-        <div className="flex flex-1">
+        <div>
           <div className="flex-1 bg-[#E6E6E6] p-4">
             <div className="p-4 bg-white h-full">
               <Calendar

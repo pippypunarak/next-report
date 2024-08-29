@@ -1,8 +1,15 @@
+"use client";
 import React from "react";
 import type { MenuProps } from "antd";
-import { Menu } from "antd";
+import { Layout, Menu } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+const { Sider } = Layout;
+interface SidebarProps {
+  collapsed: boolean;
+  onToggle: () => void; // ฟังก์ชันสำหรับ toggle
+}
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -132,16 +139,11 @@ const getMenuItems = (selectedKeys: string[]): MenuItem[] => [
   },
 ];
 
-interface SidebarProps {
-  collapsed: boolean;
-  toggleSidebar: () => void;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
+const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
   const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
   const router = useRouter();
 
-  const onSelect: MenuProps["onSelect"] = (info) => {
+  const onSelect = (info: { key: string }) => {
     console.log("Selected", info);
     setSelectedKeys([info.key]);
     if (info.key === "sub2") {
@@ -150,30 +152,38 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
   };
 
   return (
-    <div
-      className={`fixed top-0 left-0 h-full transition-all duration-300 bg-[#0E1839] ${
-        collapsed ? "w-20" : "w-60"
-      }`}
+    <Sider
+      breakpoint="lg"
+      collapsed={collapsed}
+      collapsedWidth="80"
+      onBreakpoint={(broken) => {
+        console.log(broken);
+      }}
+      onCollapse={(collapsed, type) => {
+        console.log(collapsed, type);
+      }}
+      style={{
+        position: "relative",
+      }}
+      width={240}
     >
       <div
-        onClick={toggleSidebar}
         className="absolute top-[16px] right-[16px] cursor-pointer"
+        onClick={onToggle} // เรียกฟังก์ชัน toggle เมื่อคลิก
       >
         <Image
           alt="toggle-btn"
           src="/btn_hidesidebar.svg"
           width={24}
           height={24}
-          style={{ transform: collapsed ? "scaleX(-1)" : "scaleX(1)" }}
+          style={{
+            transform: `rotate(${collapsed ? "180deg" : "0deg"})`,
+          }}
         />
       </div>
-      <Image
-        alt="aisLogo"
-        src="/default_bu.png"
-        width={60}
-        height={60}
-        className="absolute top-[64px] left-[50%] transform -translate-x-1/2"
-      />
+      <div className="absolute top-[64px] left-[50%] transform -translate-x-1/2">
+        <Image alt="aisLogo" src="/default_bu.png" width={60} height={60} />
+      </div>
       <div className="absolute mt-2 text-white text-sm top-[141px] left-[50%] transform -translate-x-1/2">
         AIS
       </div>
@@ -183,9 +193,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
         style={{ backgroundColor: "#0E1839" }}
         mode="inline"
         theme="dark"
-        inlineCollapsed={collapsed}
         items={getMenuItems(selectedKeys)}
-        className="min-h-screen flex flex-col space-y-10 break-words"
+        className="min-h-screen flex flex-col space-y-10 h-full"
       />
       <style jsx global>{`
         .ant-menu-item-selected {
@@ -207,7 +216,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleSidebar }) => {
           color: #c3eb29 !important;
         }
       `}</style>
-    </div>
+    </Sider>
   );
 };
 

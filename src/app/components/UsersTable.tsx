@@ -58,28 +58,16 @@ const UsersTable: React.FC<UsersTableProps> = ({ collapsed }) => {
         compare: (a, b) => a.userName.localeCompare(b.userName),
         multiple: 2,
       },
-      render: (text, record) => (
-        <span
-          onClick={() => handleCellClick(record.userID)}
-          className="cursor-pointer hover:text-blue-500"
-        >
-          {text}
-        </span>
-      ),
     },
     {
       title: "Display Name",
       dataIndex: "displayName",
       key: "displayName",
       align: "center",
-      render: (text, record) => (
-        <span
-          onClick={() => handleCellClick(record.userID)}
-          className="cursor-pointer hover:text-blue-500"
-        >
-          {text}
-        </span>
-      ),
+      sorter: {
+        compare: (a, b) => a.displayName.localeCompare(b.displayName),
+        multiple: 2,
+      },
     },
     {
       title: "Phone",
@@ -180,12 +168,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ collapsed }) => {
   };
 
   return (
-    <div
-      style={{
-        marginLeft: collapsed ? "80px" : "235px",
-        transition: "margin-left 0.3s",
-      }}
-    >
+    <div>
       <Table
         columns={columns}
         dataSource={data}
@@ -193,6 +176,7 @@ const UsersTable: React.FC<UsersTableProps> = ({ collapsed }) => {
         className="custom-table"
         onRow={(record) => ({
           onClick: () => handleCellClick(record.userID),
+          className: "cursor-pointer",
         })}
       />
     </div>

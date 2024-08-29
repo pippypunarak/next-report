@@ -32,7 +32,7 @@ const Calendar: React.FC<CalendarProps> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row md:justify-between items-start">
+    <div className="ml-6 flex flex-col md:flex-row md:justify-between items-start">
       <div className="flex flex-col md:flex-row">
         <div
           onClick={toggleCalendar}

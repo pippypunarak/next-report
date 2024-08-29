@@ -31,16 +31,8 @@ const onChange: DatePickerProps["onChange"] = (date, dateString) => {
 
 const HeaderUser: React.FC<TitleProps> = ({ title, collapsed }) => {
   return (
-    <header
-      className={`bg-white top-[52px] left-0 py-4 px-4 flex justify-between items-center flex-wrap ${
-        collapsed
-          ? "w-[calc(100%-80px)] ml-[80px]"
-          : "w-[calc(100%-235px)] ml-[235px]"
-      }`}
-    >
-      <div className="text-lg text-black font-bold ml-6 mb-2 md:mb-0">
-        {title}
-      </div>
+    <header className="bg-white top-[52px] left-0 mb-4 flex justify-between items-center flex-wrap ">
+      <div className="text-lg text-black font-bold mb-2 md:mb-0">{title}</div>
       <div className="flex flex-wrap gap-4 ml-auto items-center justify-end w-full md:w-auto">
         <Space direction="vertical" className="w-full md:w-auto">
           <Search
